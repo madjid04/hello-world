@@ -8,3 +8,4 @@ spring:
   jpa:
     hibernate.ddl-auto: update
     show-sql: true
+    database-platform: ${SPRING_JPA_DATABASE_PLATFORM}
