@@ -53,6 +53,16 @@ pipeline {
                 }
             }
         }
+        stage('Deploy') {
+		    steps {
+		        withCredentials([string(
+		            credentialsId: 'render-deploy-hook',
+		            variable: 'RENDER_HOOK'
+		        )]) {
+		            sh 'curl -X POST "$RENDER_HOOK"'
+		        }
+		    }
+		}
     }
 
     post {
