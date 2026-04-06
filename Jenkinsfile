@@ -17,14 +17,14 @@ pipeline {
 
         stage('Build JAR') {
             steps {
-				sh 'chmod +x mvnw'
+                sh 'chmod +x mvnw'
                 sh './mvnw package -DskipTests'
             }
         }
 
         stage('Test') {
             steps {
-                sh './mvnw test'
+                sh './mvnw test -Dspring.datasource.url=jdbc:h2:mem:testdb -Dspring.datasource.driver-class-name=org.h2.Driver'
             }
         }
 
@@ -54,15 +54,15 @@ pipeline {
             }
         }
         stage('Deploy') {
-		    steps {
-		        withCredentials([string(
-		            credentialsId: 'render-deploy-hook',
-		            variable: 'RENDER_HOOK'
-		        )]) {
-		            sh 'curl -X POST "$RENDER_HOOK"'
-		        }
-		    }
-		}
+            steps {
+                withCredentials([string(
+                    credentialsId: 'render-deploy-hook',
+                    variable: 'RENDER_HOOK'
+                )]) {
+                    sh 'curl -X POST "$RENDER_HOOK"'
+                }
+            }
+        }
     }
 
     post {

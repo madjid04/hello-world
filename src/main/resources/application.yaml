@@ -1,3 +1,10 @@
 spring:
   application:
     name: helloworld
+  datasource:
+    url: jdbc:postgresql://db:5432/helloworld
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
