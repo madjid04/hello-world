@@ -15,6 +15,6 @@ public class HelloworldApplication {
 
 	@GetMapping("/hello")
 	public String hello() {
-		return "Hello, world - Webhook OK";
+		return "Hello, world - Webhook OK -";
 	}
 }
