@@ -1,0 +1,21 @@
+app:
+  name: hello-world
+  image:
+    repository: votre-username/hello-world
+    tag: latest
+    pullPolicy: Never
+  replicas: 2
+  port: 8080
+  service:
+    type: NodePort
+    port: 80
+
+postgres:
+  image: postgres:16-alpine
+  database: helloworld
+  username: postgres
+  password: postgres
+  port: 5432
+
+secret:
+  name: hello-world-secret

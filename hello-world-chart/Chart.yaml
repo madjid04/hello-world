@@ -1,0 +1,6 @@
+apiVersion: v2
+name: hello-world-chart
+description: Spring Boot Hello World avec PostgreSQL
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
