@@ -40,11 +40,13 @@ spec:
             httpGet:
               path: /hello
               port: {{ .Values.app.port }}
-            initialDelaySeconds: 30
-            periodSeconds: 10
+            initialDelaySeconds: {{ .Values.app.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.app.readinessProbe.periodSeconds }}
+            failureThreshold: {{ .Values.app.readinessProbe.failureThreshold }}
           livenessProbe:
             httpGet:
               path: /hello
               port: {{ .Values.app.port }}
-            initialDelaySeconds: 60
-            periodSeconds: 15
+            initialDelaySeconds: {{ .Values.app.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.app.livenessProbe.periodSeconds }}
+            failureThreshold: {{ .Values.app.livenessProbe.failureThreshold }}

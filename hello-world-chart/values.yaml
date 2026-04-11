@@ -10,6 +10,17 @@ app:
     type: NodePort
     port: 80
 
+# Augmenter les délais de démarrage
+  readinessProbe:
+    initialDelaySeconds: 120
+    periodSeconds: 15
+    failureThreshold: 10
+
+  livenessProbe:
+    initialDelaySeconds: 180
+    periodSeconds: 20
+    failureThreshold: 10
+
 postgres:
   image: postgres:16-alpine
   database: helloworld
